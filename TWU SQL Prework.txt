@@ -1,0 +1,58 @@
+﻿Question 1
+
+
+SELECT member.name FROM member, checkout_item, book where book.title = 'The Hobbit' AND book.id = checkout_item.book_id AND checkout_item.member_id = member.id;
+
+
+Anand Beck
+
+
+Question 2
+
+
+SELECT COUNT(id) FROM member LEFT JOIN checkout_item ON checkout_item.member_id = member.id WHERE checkout_item.member_id IS NULL;
+
+
+37
+
+
+Question 3
+
+
+SELECT book.title FROM book LEFT JOIN checkout_item ON checkout_item.book_id = book.id WHERE checkout_item.book_id IS NULL UNION SELECT movie.title FROM movie LEFT JOIN checkout_item ON checkout_item.movie_id = movie.id WHERE checkout_item.movie_id IS NULL;
+
+
+1984
+Catcher in the Rye
+Crouching Tiger, Hidden Dragon
+Domain Driven Design
+Fellowship of the Ring
+Lawrence of Arabia
+Office Space
+Thin Red Line
+To Kill a Mockingbird
+Tom Sawyer
+
+
+Question 4
+
+
+INSERT INTO book(id, title) VALUES (11, "The Pragmatic Programmer");
+INSERT INTO member(id, name) VALUES (43, "Zack Huan");
+INSERT INTO checkout_item(member_id, book_id, movie_id) VALUES (43, 11, NULL);
+SELECT member.name FROM member, checkout_item, book where book.title = 'The Pragmatic Programmer' AND book.id = checkout_item.book_id AND checkout_item.member_id = member.id;
+
+
+Zack Huan
+
+
+
+
+Question 5
+
+
+SELECT member.name FROM member, checkout_item WHERE member.id = checkout_item.member_id GROUP BY member.name HAVING COUNT(name) > 1;
+
+
+Anand Beck
+Frank Smith
